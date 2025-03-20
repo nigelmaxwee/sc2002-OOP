@@ -1,8 +1,3 @@
-// *************************************************************
-// WeeklySales.java
-//
-// Sorts the sales staff in descending order by sales.
-// ************************************************************
 public class WeeklySales {
     public static void main(String[] args) {
         SalePerson[] salesStaff = new SalePerson[10];

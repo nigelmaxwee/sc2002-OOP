@@ -1,8 +1,4 @@
 public class Sorting {
-    //-----------------------------------------------------------------
-    // Sorts the specified array of objects using the selection
-    // sort algorithm.
-    //-----------------------------------------------------------------
     public static void selectionSort(Comparable[] list) {
         int min;
         Comparable temp;
@@ -18,10 +14,6 @@ public class Sorting {
         }
     }
 
-    //-----------------------------------------------------------------
-    // Sorts the specified array of objects using the insertion
-    // sort algorithm.
-    //-----------------------------------------------------------------
     public static void insertionSort(Comparable[] list) {
         for (int index = 1; index < list.length; index++) {
             Comparable key = list[index];

@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class Numbers {
-    // --------------------------------------------
-	// Reads in an array of integers, sorts them,
-	// then prints them in sorted order.
-	// --------------------------------------------
     public static void main(String[] args) {
         Integer[] intList;
         int size;
