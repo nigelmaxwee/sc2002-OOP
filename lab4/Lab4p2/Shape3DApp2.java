@@ -1,68 +1,66 @@
-package question2;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
-// question 2 part 3
-public class Shape3DApp2 {
+public class Shape3DApp2 { 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Object> shapes = new ArrayList<>(); 
+        int choice;  // ✅ Declare choice before using it
 
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		int numShapes = 0;
-		int shapeChoice = 0;
-		int tempLength, tempWidth, tempHeight, tempBase;
-		
-		System.out.println("Enter number of figures to produce:");
-		numShapes = sc.nextInt();
-		
-		for (int i=0; i<numShapes; i++) {
-			shapeChoice = 0;
-			System.out.println("...Choose figure  #" + (i+1));
-			System.out.println("Enter 1 for Sphere, 2 for Cylinder, 3 for Cube, 4 for Cone");
-			
-			do {
-				shapeChoice = sc.nextInt();
-				switch(shapeChoice) {
-					case 1:
-						System.out.println("Sphere chosen");
-						System.out.println("...Enter radius");
-						Sphere sphere = new Sphere(sc.nextInt());
-						System.out.println("Volume is " + sphere.getVolume());
-						break;
-						
-					case 2:
-						System.out.println("Cylinder chosen");
-						System.out.println("...Enter radius");
-							tempBase = sc.nextInt();
-						System.out.println("...Enter height");
-							tempHeight = sc.nextInt();
-						Cylinder cylinder = new Cylinder(tempBase, tempHeight);
-						System.out.println("Volume is " + cylinder.getVolume());
-						break;
-						
-					case 3:
-						System.out.println("Cube chosen");
-						System.out.println("...Enter side");
-						Cube cube = new Cube(sc.nextInt());
-						System.out.println("Volume is " + cube.getVolume());
-						break;
-						
-					case 4:
-						System.out.println("Cone chosen");
-						System.out.println("...Enter height");
-							tempHeight = sc.nextInt();
-						System.out.println("...Enter radius of base");
-							tempBase = sc.nextInt();
-						Cone cone = new Cone(tempBase, tempHeight);
-						System.out.println("Volume is " + cone.getVolume());
-						break;
-						
-					default:
-						shapeChoice = 0;
-				}
-			} while (shapeChoice == 0);			
-		}
-		
-		System.out.println("### Program ended ###");
-		System.exit(0);
-	}
+        do {
+            System.out.println("\nMENU:");
+            System.out.println("1) Add a Shape");
+            System.out.println("2) Calculate Total Surface Area");
+            System.out.println("3) Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();  // ✅ Now this works because choice is declared
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Choose shape: 1) Sphere  2) Cylinder  3) Cone");
+                    int shapeChoice = scanner.nextInt();
+
+                    switch (shapeChoice) {
+                        case 1:
+                            System.out.print("Enter radius: ");
+                            shapes.add(new Sphere(scanner.nextDouble()));
+                            break;
+                        case 2:
+                            System.out.print("Enter radius and height: ");
+                            shapes.add(new Cylinder(scanner.nextDouble(), scanner.nextDouble()));
+                            break;
+                        case 3:
+                            System.out.print("Enter radius and slant height: ");
+                            shapes.add(new Cone(scanner.nextDouble(), scanner.nextDouble()));
+                            break;
+                        default:
+                            System.out.println("Invalid choice!");
+                    }
+                    break;
+
+                case 2:
+                    double totalSurfaceArea = 0;
+                    for (Object s : shapes) {
+                        if (s instanceof Sphere) {
+                            totalSurfaceArea += ((Sphere) s).calculateSurfaceArea();
+                        } else if (s instanceof Cylinder) {
+                            totalSurfaceArea += ((Cylinder) s).calculateSurfaceArea();
+                        } else if (s instanceof Cone) {
+                            totalSurfaceArea += ((Cone) s).calculateSurfaceArea();
+                        }
+                    }
+                    System.out.println("Total 3D Surface Area: " + totalSurfaceArea);
+                    break;
+
+                case 3:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice, try again.");
+            }
+        } while (choice != 3);  // ✅ Now this works because choice is declared
+
+        scanner.close();
+    }
 }

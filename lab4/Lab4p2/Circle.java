@@ -1,22 +1,16 @@
-package question2;
+class Circle extends Shape {
+    private double radius;
 
-public class Circle implements Shape {
-	
-	private int radius;
-	
-	public Circle(int radius) {
-		this.radius = radius;
-	}
+    public Circle(double radius) {
+        this.radius = radius;
+    }
 
-	public int getRadius() {
-		return radius;
-	}
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
 
-	public void setRadius(int radius) {
-		this.radius = radius;
-	}
-	
-	public double getArea() {
-		return Math.PI * this.radius * this.radius;
-	};
+    public double getRadius() { 
+        return radius;
+    }
 }

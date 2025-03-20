@@ -1,20 +1,13 @@
-package question2;
+class Cylinder {
+    private Circle base;
+    private double height;
 
-public class Cylinder extends Circle implements _3d {
+    public Cylinder(double radius, double height) {
+        this.base = new Circle(radius);
+        this.height = height;
+    }
 
-	private int height;
-	
-	public Cylinder(int radius, int height) {
-		super(radius);
-		this.height = height;
-	}
-	
-	public double getVolume() {
-		return Math.PI * Math.pow(super.getRadius(), 2) * this.height;
-	}
-	
-	public double getSurfaceArea() {
-		return (2 * Math.PI * super.getRadius() * this.height)
-				+ (2 * Math.PI * Math.pow(super.getRadius(), 2));
-	}
+    public double calculateSurfaceArea() {
+        return 2 * Math.PI * base.getRadius() * height + 2 * base.calculateArea();
+    }
 }

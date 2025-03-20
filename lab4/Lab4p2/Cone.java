@@ -1,21 +1,13 @@
-package question2;
+class Cone {
+    private Circle base;
+    private double slantHeight;
 
-public class Cone extends Circle implements _3d {
+    public Cone(double radius, double slantHeight) {
+        this.base = new Circle(radius);
+        this.slantHeight = slantHeight;
+    }
 
-	private int height;
-	
-	public Cone(int radius, int height) {
-		super(radius);
-		this.height = height;
-	}
-	
-	public double getVolume() {
-		return (1.0 / 3.0) * Math.PI * Math.pow(super.getRadius(), 2) * this.height;
-	}
-	
-	public double getSurfaceArea() {
-		return Math.PI * super.getRadius() 
-				* (super.getRadius() + Math.sqrt(Math.pow(this.height, 2) + Math.pow(super.getRadius(), 2)));
-	}
-	
+    public double calculateSurfaceArea() {
+        return Math.PI * base.getRadius() * slantHeight + base.calculateArea();
+    }
 }

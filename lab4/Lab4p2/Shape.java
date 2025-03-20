@@ -1,6 +1,3 @@
-package question2;
-
-public interface Shape {
-
-	public double getArea();
+abstract class Shape {
+    abstract double calculateArea();
 }
