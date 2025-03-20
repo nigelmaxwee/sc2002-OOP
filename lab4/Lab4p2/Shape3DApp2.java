@@ -59,7 +59,7 @@ public class Shape3DApp2 {
                 default:
                     System.out.println("Invalid choice, try again.");
             }
-        } while (choice != 3);  // ✅ Now this works because choice is declared
+        } while (choice != 3);  
 
         scanner.close();
     }
